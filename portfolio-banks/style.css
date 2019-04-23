@@ -1,0 +1,571 @@
+/** Author: Cheryl J. Banks **/
+/** This is CSS code for my portfolio. **/
+
+body {
+    max-width: 46rem;
+    min-width: 640px;
+    margin: auto;
+    /** Source - next line: https://developer.mozilla.org/en-US/docs/Web/CSS/display **/
+    display: block;
+}
+
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: minmax(10px, auto);
+    grid-gap: 1px;
+    max-width: 990px;
+    min-width: 640px;
+}
+
+
+header {
+  grid-column: 1 / 3;
+  grid-row: 1;
+  background-color: #66c1bd;
+}
+
+      .topper {
+        font-size: 1rem;
+      }
+
+      .designGallery {
+        font-size: 0.9rem;
+      }
+
+      .topper, .designGallery {
+        margin-bottom: 0;
+        color: #ffffff;
+      }
+
+
+.myName {
+  grid-column: 1 / 3;
+  grid-row: 2;
+  background-color: #ffffff;
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 30% 15% 12% 30%;
+  grid-gap: 0px;
+  text-align: center;
+  padding-top: 2.5rem;
+  padding-bottom: 1rem;
+}
+
+    .eyes {
+      grid-column: 1 / 3;
+      grid-row: 1;
+      width: 18em;
+      /** Next 2 lines - Resource: https://www.w3.org/Style/Examples/007/center.en.html#block **/
+      margin-left: auto;
+      margin-right: auto;
+      padding-bottom: 2rem;
+    }
+
+    .miNombre {
+      grid-column: 1 / 3;
+      grid-row: 2;
+      color: #EE820D;
+      font-size: 2.65rem;
+      font-family: 'Raleway', sans-serif;
+    }
+
+    .myTagline {
+      grid-column: 1 / 3;
+      grid-row: 3;
+      color: #3CADAD;
+      font-size: 1.45rem;
+      font-family: 'Lato', sans-serif;
+
+    }
+
+    .mouth {
+      grid-column: 1 / 3;
+      grid-row: 4;
+      width: 20em;
+      /** Next 2 lines - Resource: https://www.w3.org/Style/Examples/007/center.en.html#block **/
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+.mySkills {
+  grid-column: 1 / 3;
+  grid-row: 3;
+  background-color: #C7FFF0;
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-gap: 0px;
+
+  padding-bottom: 1.5em;
+  padding-top: 1.5em;
+}
+
+    .webDevSkills {
+      grid-column: 1 / 2;
+      grid-row: 1;
+      font-family: 'Fjalla One', sans-serif;
+      width: 20em;
+      padding-left: 2.25em;
+      padding-top: 2.25em;
+      color: #017786;
+    }
+
+    .webDevPicture {
+      grid-column: 2 / 3;
+      grid-row: 1;
+      width: 19em;
+      padding-top: 2.2em;
+      padding-left: 2em;
+    }
+
+    .graphDesignPicture {
+      grid-column: 1 / 2;
+      grid-row: 2;
+      width: 19em;
+      padding-top: 3.4em;
+      padding-left: 2em;
+    }
+
+    .graphDesignSkills {
+      grid-column: 2 / 3;
+      grid-row: 2;
+      font-family: 'Fjalla One', sans-serif;
+      width: 19em;
+      padding-left: 2em;
+      padding-top: 3.5em;
+      color: #d42a02;
+    }
+
+.webGallery {
+  grid-column: 1 / 3;
+  grid-row: 5;
+  background-color: #fcfac0;
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: auto;
+  grid-gap: 0px;
+  padding-top: 2.75em;
+  padding-bottom: 3.5em;
+}
+
+    .galleryTop {
+      grid-column: 1 / 3;
+      grid-row: 1;
+      padding-left: 3rem;
+      padding-bottom: 1.6rem;
+    }
+
+    .galleryTitle {
+      font-family: 'Lato', sans-serif;
+      color: #00716e;
+    }
+
+    .galleryDescription {
+      width: 35em;
+      font-family: 'Roboto', sans-serif;
+      color: #003235;
+    }
+
+    .craigslistSkills {
+      grid-column: 1 / 2;
+      grid-row: 2;
+      padding-left: 3em;
+      padding-top: 3em;
+    }
+
+    .craigslistMini {
+      width: 12em;
+      border-radius: 0.75em;
+      box-shadow: 1px 2px 5px #5d5d5d;
+    }
+
+    .twoCraigslistDescribe {
+      padding-top: 1.5em;
+    }
+
+    .craigslistDescribe {
+      font-family: 'Fjalla One', sans-serif;
+      width: 18em;
+      color: #005152;
+      margin-bottom: 1rem;
+    }
+
+    .linkCraigslist {
+      color: #005152;
+      text-decoration: underline;
+    }
+
+    .craigslistGitHub {
+      color: #005152;
+      font-size: 0.8rem;
+    }
+
+    .craigslistIntro {
+      grid-column: 2 / 3;
+      grid-row: 2;
+      width: 18em;
+      padding-left: 1em;
+      padding-top: 0.5em;
+    }
+
+
+    .yellowLineIntro {
+      grid-column: 1 / 3;
+      grid-row: 3;
+      width: 40em;
+      padding-left: 3.25em;
+      padding-top: 4em;
+    }
+
+
+    .matchingGameSkills {
+      grid-column: 2 / 3;
+      grid-row: 4;
+      padding-left: 0.75em;
+      padding-top: 5.5em;
+    }
+
+    .matchingGameMini {
+      border-radius: 1em;
+      width: 15.5em;
+      border-radius: 0.5em;
+      box-shadow: 2px 4px 5px #58583b;
+    }
+
+    .matchingGameDescribe {
+      font-family: 'Fjalla One', sans-serif;
+      width: 18em;
+      color: #014634;
+      margin-bottom: 1rem;
+    }
+
+    .twoMatchingGameDescribe {
+      padding-top: 1.5em;
+    }
+
+    .matchingGameGitHub {
+      color: #014634;
+      font-size: 0.8rem;
+    }
+
+    .matchingGameIntro {
+      grid-column: 1 / 2;
+      grid-row: 4;
+      width: 20em;
+      padding-left: 2.5em;
+      padding-top: 3.5em;
+    }
+
+
+    .yellowLineIntro2 {
+      grid-column: 1 / 3;
+      grid-row: 5;
+      width: 40em;
+      padding-left: 3.25em;
+      padding-top: 4em;
+    }
+
+
+    .berkshireHathawaySkills {
+      grid-column: 1 / 2;
+      grid-row: 6;
+      padding-left: 3em;
+      padding-top: 7em;
+    }
+
+    .berkshireHathawayMini {
+      width: 12em;
+    }
+
+    .berkshireHathawayDescribe {
+      font-family: 'Fjalla One', sans-serif;
+      width: 18em;
+      color: #634a4a;
+      margin-bottom: 1rem;
+    }
+
+    .twoBerkshireHathawayDescribe {
+      padding-top: 1.5em;
+    }
+
+    .linkBerkshireHathaway {
+      color: #634a4a;
+      text-decoration: underline;
+    }
+
+    .berkshireHathawayGitHub {
+      color: #634a4a;
+      font-size: 0.8rem;
+    }
+
+    .berkshireHathawayIntro {
+      grid-column: 2 / 3;
+      grid-row: 6;
+      width: 18em;
+      padding-left: 1em;
+      padding-top: 3.9em;
+    }
+
+
+.graphicGallery {
+  grid-column: 1 / 3;
+  grid-row: 6;
+  background-color: #ffffff;
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: auto;
+  grid-gap: 0px;
+  padding-top: 2.75em;
+  padding-bottom: 3.5em;
+}
+
+    .graphicGalleryTop {
+      grid-column: 1 / 3;
+      grid-row: 1;
+      padding-left: 1.75rem;
+      padding-bottom: 1.6rem;
+    }
+
+    .graphicGalleryTitle {
+      font-family: 'Lato', sans-serif;
+      color: #634a4a;
+    }
+
+    .graphicGalleryDescription {
+      width: 39em;
+      font-family: 'Roboto', sans-serif;
+      color: #634a4a;
+    }
+
+    .myDesignsGrid {
+      grid-column: 1 / 3;
+      grid-row: 2;
+
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: auto;
+      grid-row-gap: 3em;
+      grid-column-gap: 2em;
+    }
+
+        .freshTomatoes {
+          grid-column: 1;
+          grid-row: 1;
+          width: 21em;
+          margin: auto;
+        }
+
+        .myBusCardNegSpace {
+          grid-column: 2;
+          grid-row: 1;
+          width: 19em;
+          margin: auto;
+        }
+
+        .businessCardGray {
+          grid-column: 1;
+          grid-row: 2;
+          width: 19em;
+          margin: auto;
+        }
+
+        .businessCardBeige {
+          grid-column: 2;
+          grid-row: 2;
+          width: 19em;
+          margin: auto;
+        }
+
+        .instaStopCircle {
+          grid-column: 1;
+          grid-row: 3;
+          width: 16em;
+          margin: auto;
+        }
+
+        .instaStopTilt {
+          grid-column: 2;
+          grid-row: 3;
+          width: 17em;
+          margin: auto;
+          box-shadow: 3px 3px 6px #4e4e4e;
+        }
+
+        .idealLogoRound {
+          grid-column: 1;
+          grid-row: 4;
+          width: 14.5em;
+          margin: auto;
+        }
+
+        .idealLogoSingleLtr {
+          grid-column: 2;
+          grid-row: 4;
+          width: 18em;
+          margin: auto;
+        }
+
+        .myBusCardStack {
+          grid-column: 1;
+          grid-row: 5;
+          width: 10em;
+          margin: auto;
+          box-shadow: 0px 3px 10px black;
+        }
+
+        .autoRepair {
+          grid-column: 2;
+          grid-row: 5;
+          width: 14em;
+          margin: auto;
+        }
+
+
+
+/** Source: https://www.reddit.com/r/css/comments/7ym886/how_to_center_align_text_inside_a_css_grid_cell/ **/
+.theBottom {
+  grid-column: 1 / 3;
+  grid-row: 7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgb(0, 0, 0);
+  font-size: 0.80em;
+  padding-top: 2em;
+  padding-bottom: 5em;
+}
+
+
+
+@media only screen and (min-width: 992px) {
+
+  .designGallery {
+    padding-left: 30em;
+  }
+
+}
+
+
+@media only screen and (max-width: 769px) {
+
+  .container {
+    max-width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+}
+
+
+@media only screen and (max-width: 675px){
+
+  .webDevPicture {
+    width: 17em;
+    padding-left: 1em;
+  }
+
+  .webDevSkills {
+    font-size: 0.95rem;
+  }
+
+  .graphDesignPicture {
+    width: 18em;
+  }
+
+  .graphDesignSkills {
+    font-size: 0.95rem;
+    padding-left: 1em;
+  }
+
+  .galleryTop {
+    font-size: 0.95rem;
+  }
+
+  .craigslistSkills {
+    padding-top: 1.75em;
+  }
+
+  .craigslistIntro {
+    width: 14.5em;
+  }
+
+  .craigslistDescribe {
+    width: 15em;
+    font-size: 0.9rem;
+  }
+
+  .craigslistMini {
+    width: 10em;
+  }
+
+  .yellowLineIntro {
+    width: 37em;
+  }
+
+  .matchingGameIntro {
+    width: 18em;
+  }
+
+  .matchingGameSkills {
+    padding-left: 1em;
+  }
+
+  .matchingGameMini {
+    width: 12em;
+  }
+
+  .matchingGameDescribe {
+    width: 16em;
+    font-size: 0.9rem;
+  }
+
+  .yellowLineIntro2 {
+    width: 37em;
+  }
+
+  .berkshireHathawayMini {
+    width: 14em;
+  }
+
+  .berkshireHathawayIntro {
+    width: 16em;
+  }
+
+  .berkshireHathawayDescribe {
+    width: 14.5em;
+    font-size: 0.9rem;
+  }
+
+  .myDesignsGrid {
+    grid-column-gap: 1.25em;
+  }
+
+  .graphicGalleryTop {
+    font-size: 0.90rem;
+  }
+
+  .freshTomatoes {
+    width: 19em;
+  }
+
+  .myBusCardNegSpace {
+    width: 15em;
+  }
+
+  .businessCardGray, .businessCardBeige {
+    width: 17em;
+  }
+
+  .instaStopTilt {
+    width: 15em;
+  }
+
+}
