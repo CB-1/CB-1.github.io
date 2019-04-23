@@ -1,0 +1,1484 @@
+/*
+CHERYL BANKS
+MATCHING GAME PROJECT
+DEC 2018
+REVISED
+*/
+
+
+/* Resource: https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Grids */
+
+.hidden{
+    display:none;
+}
+
+
+/* Source: https://stackoverflow.com/questions/2869212/css3-gradient-background-set-on-body-doesnt-stretch-but-instead-repeats */
+/* This code helps the linear-gradient to stretch at page bottom rather than repeat itself. */
+html {
+    height: 100%;
+}
+
+body {
+  /* Next 2 lines - Source: https://stackoverflow.com/questions/2869212/css3-gradient-background-set-on-body-doesnt-stretch-but-instead-repeats */
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  width: 75%;
+  max-width: 56.250em;
+  min-width: 320px;
+  margin: 2em auto;
+  font: .9em/1.2 Arial, Helvetica, sans-serif;
+  background: linear-gradient(160deg, #b4f9ef 0%, #fffad2 100%);
+}
+
+
+/* =================================================== */
+
+
+/*  WELCOME DIALOG - START */
+
+
+#overlay {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgb(206, 251, 252);
+  z-index: 90;
+  cursor: pointer;
+}
+
+/* Source and Resource: https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Grids */
+/* Reading Reference: https://stackoverflow.com/questions/46184458/transform-translate-50-50 */
+#text{
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  font-size: 3.85vw;
+  transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+}
+
+
+    /* Welcome to the Matching Game title */
+h2 {
+    font-weight: bold;
+    text-align: center;
+    color: rgb(86,61,132);
+    font-family: 'Chicle', cursive;
+    letter-spacing: 3.25px;
+    text-shadow: 2px 3px 12px rgb(199, 237, 255), 0.5px 5px 1px rgb(37, 107, 106);
+}
+
+    /* Welcome to the Matching Game title */
+
+h2 {
+    font-size: 200%;
+}
+
+/* Welcome to the Matching Game title */
+h3 {
+    font-family: 'Oswald', sans-serif;
+    font-weight: bold;
+    text-align: center;
+    color: rgb(86,61,132);
+    letter-spacing: 1px;
+}
+
+i.fas.fa-chevron-down, i.fas.fa-chevron-up, i.fas.fa-times.closer,  i.fas.fa-times.showDown {
+  color: rgb(86,61,132);
+}
+
+
+/* X at top right corner of Welcome dialog */
+i.fas.fa-times.closer {
+  position: fixed;
+  top: 25px;
+  left: 90.5%;
+}
+
+
+/* Dropdown container on Welcome dialog - START */
+#dialog-about {
+  padding-top: 0.5em;
+}
+
+#dialog-about ul {
+  padding: 0;
+}
+
+
+
+/* Dropdown text for brief rules */
+/* Source: https://codepen.io/secondfret/pen/mIBqf */
+ ul.briefRules li, div.row {
+   font: 200 20px/1.5 Helvetica, Verdana, sans-serif;
+   border-bottom: 1px solid rgb(34, 142, 63);
+   color: rgb(42, 28, 57);
+   list-style-type: none;
+   padding: 0;
+ }
+
+
+/* Removes underline on dropdown in Welcome dialog */
+/* Source: https://codepen.io/secondfret/pen/mIBqf */
+  ul.briefRules li:last-child {
+    border: none;
+  }
+
+
+/* Source: https://codepen.io/secondfret/pen/mIBqf */
+li:last-child {
+ border: none;
+}
+
+.showDown {
+  display: block;
+  text-align:center
+}
+
+/* Dropdown container on Welcome dialog - END */
+
+
+/*  WELCOME DIALOG - END */
+
+/* =================================================== */
+
+/* STYLING FOR GAME PAGE - START */
+
+
+
+/* Container for the card deck game page */
+/* Allows for the game page to exist with overlays */
+/* Source: https://www.josephearl.co.uk/post/css-overlay/ */
+#gameContent {
+  height: 100%;
+}
+
+
+h1 {
+    text-align: center;
+    font-family: 'Chicle', cursive;
+    font-weight: 300;
+    font-size: 9vw;
+    margin-bottom: 0.4em;
+    text-shadow: 0px 2.5px 4px rgb(1,255,249), 1px 3.5px 4px rgb(33, 70, 69), 0px 3px 10px rgb(134,199,198), 0px 4px 0px rgb(134,199,198);
+    color: rgb(43,75,84);
+    letter-spacing: 0.025em;
+}
+
+
+
+/* One-column grid that holds the game title and card deck */
+.containerMain {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+
+/* Cards */
+.deckContainer > div {
+    border-radius: 5px;
+    padding: 1%;
+    background-color: #25474E;
+    border: 1px solid #25474E;
+    /* Source of next 3 lines of code: https://www.reddit.com/r/css/comments/7ym886/how_to_center_align_text_inside_a_css_grid_cell/ */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0;
+}
+
+div.card.open {
+     transform: rotateY(0);
+     background-color: #02b3e4;
+     cursor: default;
+     border: 1px solid rgb(58,72,111);
+     font-size: 3.5rem;
+ }
+
+div.card.match {
+    cursor: default;
+    background-color: #02ccba;
+    border: 1px solid #008e82;
+    font-size: 3.5rem;
+ }
+
+div.card.noMatch {
+    cursor: default;
+    background-color: #d62f19;
+    border: 2px solid #d62f19;
+    font-size: 3.5rem;
+ }
+
+/* DIV that creates the 4 x 4 grid for the card deck */
+.deckContainer {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: minmax(9em, auto);
+    grid-gap: 1.5em;
+    gap: 1.5em;
+}
+
+/* DIV container that serves as the background for the deck of cards */
+.primaryDeck {
+  display: grid;
+  border: 0.5px solid rgb(135, 153, 177);
+  border-radius: 10px;
+  padding-top: 3.375em;
+  padding-bottom: 3.375em;
+  padding-left: 1.875em;
+  padding-right: 1.875em;
+  box-shadow: 14px 14px 16px 1px rgb(147, 157, 165);
+  background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
+}
+
+
+/*  To identify which cards have been opened that are part of a correct matching pair.  */
+div.showOnlyCorrect{}
+
+
+/* STYLING FOR GAME PAGE - END */
+
+
+/* =================================================== */
+
+
+/* STYLING FOR CHOOSE A SKILL LEVEL OVERLAY - START */
+
+#skillOverlay {
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #d8fcee;
+    z-index: 100;
+    cursor: pointer;
+}
+
+
+/* Source and Resource: https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Grids */
+/* Reading Reference: https://stackoverflow.com/questions/46184458/transform-translate-50-50 */
+#skillText{
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+}
+
+
+div.easyFront {
+  background-color: #83FFE9;
+  border-radius: 6px;
+  color: rgb(4, 93, 69);
+}
+
+
+div.rearEasyFront {
+  background-color: #83FFE9;
+  color: rgb(0, 59, 43);
+}
+
+
+div.modFront {
+  background-color: #02D3C2;
+  border-radius: 6px;
+  color: rgb(60, 62, 62);
+}
+
+div.rearModFront {
+  background-color: #02D3C2;
+  color: rgb(30, 31, 31);
+}
+
+
+div.diffFront {
+  background-color: #03919B;
+  border-radius: 6px;
+  color: rgb(251, 252, 252);
+}
+
+/* Prevents the width of the easy and difficult cards from decreasing on hover */
+div.front.easyFront, div.front.diffFront {
+  width: 7.25em;
+}
+
+div.rearDiffFront {
+    background-color: #037b8c;
+    color: rgb(255, 255, 255);
+}
+
+
+
+div.impFront {
+  background-color: #024247;
+  border-radius: 6px;
+  color: rgb(255, 255, 255);
+}
+
+
+div.rearImpFront {
+  background-color: #023747;
+  color: rgb(255, 255, 255);
+}
+
+
+/* Separate containers for all four skill levels */
+/* Resource: https://nicolaskadis.info/projects/pure-css-flip-cards-using-bootstrap-4-and-css-grid-no-js */
+.card-flip {
+  display: grid;
+  grid-template-areas: "frontAndBack";
+  transform-style: preserve-3d;
+  transition: all 0.7s ease;
+  box-shadow: 3px 5px 10px #617d7d;
+}
+
+
+/* Resource: https://nicolaskadis.info/projects/pure-css-flip-cards-using-bootstrap-4-and-css-grid-no-js */
+.card-flip div {
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
+
+
+/* Resource: https://nicolaskadis.info/projects/pure-css-flip-cards-using-bootstrap-4-and-css-grid-no-js */
+.card-flip:hover {
+  transform: rotateY(180deg);
+}
+
+
+/* Container for the header and four skill levels */
+.card-container {
+  display: grid;
+  perspective: 700px;
+  /* Source: https://stackoverflow.com/questions/47017454/set-a-height-value-on-an-individual-css-grid-row */
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 15px;
+  grid-template-rows: minmax(75px, auto);
+  width: 50%;
+  max-width: 70vw;
+  min-width: 60vw;
+  min-height: 60vw;
+  /* Source: https://www.w3schools.com/css/css_align.asp */
+  margin: 2.25em auto;
+}
+
+
+/* Resource: https://nicolaskadis.info/projects/pure-css-flip-cards-using-bootstrap-4-and-css-grid-no-js */
+div.front {
+  grid-area: frontAndBack;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4vw;
+}
+
+
+/* Resource: https://nicolaskadis.info/projects/pure-css-flip-cards-using-bootstrap-4-and-css-grid-no-js */
+div.back {
+  grid-area: frontAndBack;
+  transform: rotateY(180deg);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+div.back ul li {
+  list-style-type: none;
+}
+
+div.back ul {
+  padding: 0;
+}
+
+/* "Pick a Skill Level" row on skill level overlay grid */
+.headerLevel {
+  grid-column: 1 / 3;
+  font-size: 4vw;
+}
+
+/* Disables the "Pick a Skill Level" Bootstrap button on skill level overlay */
+.btn-outline-dark:disabled {
+  color: rgb(6, 1, 24);
+  font-weight: 500;
+  box-shadow: 3px 3px 10px #838e8d;
+}
+
+/* Styling for the Font Awesome balloon icon at back of skill level flip cards */
+li.rearPick {
+  font-size: 1.6rem;
+  border-bottom: none;
+  padding-top: 0.4em;
+}
+
+/* Styling for the Font Awesome clock icon at back of difficult and impossible skill level flip cards */
+li.topperPick {
+  padding-top: 1em;
+  font-size: 1.6rem;
+  padding-bottom: 0.5em;
+}
+
+/* Styling for the Font Awesome clock icon at back of easy and moderate skill level flip cards */
+li.topperPickLight {
+  padding-top: 1em;
+  font-size: 1.6rem;
+  padding-bottom: 0.4em;
+}
+
+/* Centers the 'one hour' on the back of the easy flip card */
+.oneHour {
+  text-align: center;
+  padding-bottom: 0.3em;
+}
+
+/* Adds border to the "easy" skill level flip card */
+div.solid {
+  border-style: solid;
+  border-width: 1px;
+  border-color: #62b0a3;
+  border-radius: 6px;
+}
+
+/* Adds border to the "moderate" skill level flip card */
+div.solidMod {
+  border-style: solid;
+  border-width: 1px;
+  border-color: #698c86;
+  border-radius: 6px;
+}
+
+/* Adds border to the "impossible" skill level flip card */
+div.solidDiff {
+  border-style: solid;
+  border-width: 1px;
+  border-color: #657774;
+  border-radius: 6.7px;
+  box-shadow: 4.75px 5px 10px #506565;
+}
+
+div.solidImp {
+  border-radius: 6px;
+  box-shadow: 2.75px 4.75px 12px #188682, 3px 5px 8px #565656;
+}
+
+.far.fa-clock {
+  padding-right: 0.18em;
+  /* Next 2 lines - Source: https://stackoverflow.com/questions/17309928/how-to-center-text-vertically-with-a-large-font-awesome-icon */
+  vertical-align: middle;
+  font-size: 1.5em;
+}
+
+
+li.rearPick i.fab.fa-fly {
+  padding-right: 0.24em;
+  /* Next 2 lines - Source: https://stackoverflow.com/questions/17309928/how-to-center-text-vertically-with-a-large-font-awesome-icon */
+  vertical-align: middle;
+  font-size: 1.65em;
+}
+
+
+/* Middle border on back of all flip cards */
+li.centerMinus {
+  text-align: center;
+}
+
+
+/* Text color of middle border of easy flip card */
+li.centerMinusEasy {
+  color: #61e0d1;
+}
+
+/* Text color of middle border of moderate flip card */
+li.centerMinusMod {
+  color: #17b19a;
+}
+
+/* Text color of middle border of difficult flip card */
+li.centerMinusDiff {
+  color: #4b9b9e;
+}
+
+/* Text color of middle border of impossible flip card */
+li.centerMinusImp {
+  /*color: #456f62;*/
+  color: #406358;
+}
+
+
+/* STYLING FOR CHOOSE A SKILL LEVEL OVERLAY - END */
+
+
+/* =================================================== */
+
+
+/* STYLING FOR THIS IS YOUR PICK (CHOSEN SKILL LEVEL) OVERLAY - START */
+
+#pickOverlay {
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #d8fcee;
+    z-index: 100;
+    cursor: pointer;
+}
+
+/* Source and Resource: https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Grids */
+/* Reading Reference: https://stackoverflow.com/questions/46184458/transform-translate-50-50 */
+#pickText{
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  font-size: 3.85vw;
+  transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+}
+
+
+/* Container for "Your Pick: Skill Level You Chose" */
+.pick-container {
+  display: grid;
+  perspective: 700px;
+  /* Source: https://stackoverflow.com/questions/47017454/set-a-height-value-on-an-individual-css-grid-row */
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: minmax(75px, auto);
+  width: 50%;
+  max-width: 70vw;
+  min-width: 50vw;
+  min-height: 45vw;
+  /* Source: https://www.w3schools.com/css/css_align.asp */
+  margin: 2.25em auto;
+  border-radius: 10px;
+  box-shadow: 3px 3px 3px #7d8888, 9px 9px 20px #4f5d5d;
+}
+
+
+/* "YOUR PICK" row on level chosen overlay grid */
+.pickLevel {
+  grid-column: 1 / 3;
+  border-radius: 10px;
+}
+
+.textPick {
+  grid-column: 1 / 3;
+  font-size: 3vw;
+  text-align: center;
+  padding-top: 12vw;
+}
+
+/* "The-level-that-was-chosen" row on level chosen overlay grid */
+.pickDescribe {
+  grid-column: 1 / 3;
+  font-size: 6.25vw;
+  text-align: center;
+  padding-top: 0.5vw;
+}
+
+
+/* Styling corresponding to the "easy" skill level flip card */
+div.eLevel {
+  background: #83FFE9;
+  font-weight: 500;
+  color: rgb(0, 59, 43);
+  border-style: solid;
+  border-width: 1px;
+  border-color: #62b0a3;
+}
+
+
+
+/* Styling corresponding to the "moderate" skill level flip card */
+div.modLevel {
+  background: #02D3C2;
+  font-weight: 500;
+  color: rgb(30, 31, 31);
+  border-style: solid;
+  border-width: 1px;
+  border-color: #3d6961;
+}
+
+
+
+/* Styling corresponding to the "difficult" skill level flip card */
+div.diffLevel {
+  background: #037b8c;
+  color: rgb(255, 255, 255);
+  font-weight: 500;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #2e4f49;
+}
+
+
+
+/* Styling corresponding to the "difficult" skill level flip card */
+div.impLevel {
+  background: #023747;
+  color: rgb(255, 255, 255);
+  font-weight: 500;
+}
+
+/* Bootstrap buttons for "Skill Level Chosen" */
+div.buttonPick {
+  grid-column: 1 / 2;
+  text-align: center;
+  padding-top: 7vw;
+}
+
+
+span.leftButton {
+  padding-right: 1.75vw;
+}
+
+span.rightButton {
+  padding-left: 1.75vw;
+}
+
+
+.fas.fa-arrow-left {
+  padding-right: 4px;
+}
+
+.fas.fa-arrow-right {
+  padding-right: 4px;
+}
+
+/* Classes set up to differentiate between the back and next buttons on the 'your pick' overlay */
+.back .next {}
+
+/* STYLING FOR THIS IS YOUR PICK (CHOSEN SKILL LEVEL) OVERLAY - END */
+
+
+
+/* =================================================== */
+
+
+/* GAME RULES OVERLAY - START */
+
+#rulesOverlay {
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #d8fcee;
+    z-index: 200;
+    cursor: pointer;
+}
+
+
+/* Source: https://www.josephearl.co.uk/post/css-overlay/ */
+/* Source: https://stackoverflow.com/questions/16670931/hide-scroll-bar-but-while-still-being-able-to-scroll */
+#rulesText{
+    width: 100%;
+    height: 100%;
+}
+
+
+/* Container for the vertical navigation bar */
+ul.navRules {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: auto;
+    background-color: #168da2;
+    height: 100%; /* Full height */
+    position: fixed; /* Make it stick, even on scroll */
+    overflow: auto; /* Enable scrolling if the sidenav has too much content */
+    padding-left: 1em;
+    padding-right: 2em;
+}
+
+
+/* Styling for the rules overlay navigation bar headers */
+ul.navRules span {
+  font-size: 1.50em;
+  color: rgb(255, 255, 255);
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+/* Styling for the X to close the rules overlay */
+ul.navRules i {
+  color: rgb(255, 255, 255);
+}
+
+/* Styling for all headers (except the X and "Board") in the rules overlay nav bar */
+ul.navRules li {
+  padding-top: 2.5em;
+}
+
+/* Styling for the X to close the rules overlay */
+ul.navRules li:first-child {
+  padding-top: 1em;
+}
+
+/* Styling for the 1st header in the nav bar of the rules overlay ("Board") */
+ul.navRules li:nth-child(2) {
+  padding-top: 5.60em;
+}
+
+
+/* Parent container for the paragraphs in the rules overlay */
+/* Resource: https://stackoverflow.com/questions/1269589/css-center-block-but-align-contents-to-the-left */
+div.rulesContainer {
+  padding-left: 1.5em;
+}
+
+
+/* Child container for the paragraphs in the rules overlay */
+/* Source: https://stackoverflow.com/questions/1269589/css-center-block-but-align-contents-to-the-left */
+div.rulesContent {
+  display: inline-block;
+  text-align: left;
+  line-height: 1.1em;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-top: 1.2em;
+  margin-bottom: 1.5em;
+  /* The following line pushes the paragraphs in the rules overlay to the right of the vertical nav bar */
+  padding-left: 6.5em;
+}
+
+
+/* Styling for the paragraph titles in the game rules overlay */
+.ruleTitles {
+  font-weight: bold;
+  list-style: none;
+  color: rgb(35, 5, 122);
+  font-size: 1.10em;
+  /* Source: https://stackoverflow.com/questions/10732690/offsetting-an-html-anchor-to-adjust-for-fixed-header */
+  padding-top: 120px;
+}
+
+
+/* Styling for the paragraphs in the game rules overlay */
+.rulesParagraph {
+  margin-bottom: 2em;
+  color: rgb(58, 38, 80);
+  list-style-type: circle;
+  /* Resource: https://stackoverflow.com/questions/5083192/what-does-this-size-mean-in-css-font-14px-24px-arial-helvetica-sans-serif */
+  font: 300 20px/1.60 Helvetica, Verdana, sans-serif;
+}
+
+
+/* Styling for intro paragraph text and paragraph titles in game rules overlay */
+p {
+    color: rgb(58, 38, 80);
+}
+
+
+/* GAME RULES OVERLAY - END */
+
+
+/* =================================================== */
+
+
+/* GAME WON OVERLAY - START */
+
+#winOverlay {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgb(211,255,227);
+  z-index: 90;
+  cursor: pointer;
+  text-align: center;
+}
+
+
+/* Source and Resource: https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Grids */
+/* Reading Reference: https://stackoverflow.com/questions/46184458/transform-translate-50-50 */
+#textWin{
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  font-size: 3.85vw;
+  transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+}
+
+
+/* X at top right corner of Congratulations overlay */
+i.far.fa-times-circle.congratClose {
+  position: fixed;
+  top: 25px;
+  left: 90.5%;
+  color: rgb(44, 88, 107);
+}
+
+/* Congratulations */
+h2.fireUp {
+  text-shadow: 1px 3px 4px rgb(1,68,57), 1px 4px 8px rgb(40,58,57), 1px 6px 30px rgb(125,173,172), 0px 10px 1px rgb(134,199,198);
+  color: rgb(192,249,239);
+  font-size: 230%;
+  font-family: 'Chicle', cursive;
+  font-weight: bold;
+  letter-spacing: 4px;
+}
+
+
+h3.fireDown {
+  font-weight: bold;
+  color: rgb(54, 86, 99);
+  font-family: 'Oswald', sans-serif;
+  padding-top: 0.20em;
+  font-size: 0.85em;
+}
+
+
+/* Grid container for the statistics board */
+div.containerForFinalStats {
+  display: grid;
+  grid-template-columns: 0.5fr 0.85fr 1fr;
+  grid-auto-rows: minmax(1.10em, auto);
+  margin: auto;
+  margin-top: 0.75em;
+  margin-bottom: 0.10em;
+  width: 36vw;
+  color: rgb(25, 63, 70);
+  box-shadow: 3px 5px 10px #4d5050;
+  background-color: rgb(218,255,248);
+}
+
+div.statisticsBoardLogo {
+  grid-column: 1 / 4;
+  grid-row: 1;
+}
+
+/* Level Played */
+div.levelPlayedLogo {
+  grid-column: 1 / 4;
+  grid-row: 2;
+  font-family: 'Lato', sans-serif;
+  /* Source: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout/Box_Alignment_in_CSS_Grid_Layout */
+  align-self: center;
+  font-size: 0.50em;
+  padding-bottom: 1em;
+  border-bottom: 1px solid rgb(7, 19, 85);
+}
+
+/* Start and End */
+span.startEndStatBoard {
+  font-family: 'Lato', sans-serif;
+}
+
+
+/* Time Row - Start */
+div.timeTimeLogo {
+  grid-column: 1;
+  grid-row: 3;
+  align-self: center;
+  font-size: 0.85em;
+  border-bottom: 1px solid rgb(7, 19, 85);
+  padding-bottom: 0.40em;
+  padding-top: 0.30em;
+  color: rgb(54, 99, 97);
+}
+
+/* These CSS settings negate prior settings for the clock icon per the "Pick a Skill" overlay. */
+i.far.fa-clock.logoForStatBoard {
+  padding-right: 0;
+  font-size: 0.90em;
+  vertical-align: 0;
+}
+
+div.beginTime {
+  grid-column: 2;
+  grid-row: 3;
+  border-bottom: 1px solid rgb(7, 19, 85);
+  border-right: 1px solid rgb(7, 19, 85);
+  font-size: 0.70em;
+  padding-top: 0.50em;
+}
+
+div.timeYouEnded {
+  grid-column: 3;
+  grid-row: 3;
+  border-bottom: 1px solid rgb(7, 19, 85);
+  font-size: 0.70em;
+  padding-top: 0.50em;
+}
+/* Time Row - End */
+
+
+/* Moves Row - Start */
+div.moveMoveLogo {
+  grid-column: 1;
+  grid-row: 4;
+  align-self: center;
+  font-size: 0.85em;
+  border-bottom: 1px solid rgb(7, 19, 85);
+  padding-bottom: 0.30em;
+  padding-top: 0.40em;
+  color: rgb(54, 99, 97);
+}
+
+div.moveBegin {
+  grid-column: 2;
+  grid-row: 4;
+  border-bottom: 1px solid rgb(7, 19, 85);
+  border-right: 1px solid rgb(7, 19, 85);
+  font-size: 0.70em;
+  padding-top: 0.50em;
+}
+
+div.endYourMove {
+  grid-column: 3;
+  grid-row: 4;
+  border-bottom: 1px solid rgb(7, 19, 85);
+  font-size: 0.70em;
+  padding-top: 0.50em;
+}
+/* Moves Row - End */
+
+
+/* Stars Row - Start */
+div.starStarLogo {
+  grid-column: 1;
+  grid-row: 5;
+  align-self: center;
+  justify-self: center;
+  padding-bottom: 0.25em;
+  padding-top: 0.40em;
+  font-size: 0.85em;
+  color: rgb(54, 99, 97);
+}
+
+div.starStarts {
+  grid-column: 2;
+  grid-row: 5;
+  border-right: 1px solid rgb(7, 19, 85);
+  font-size: 0.70em;
+  padding-top: 0.50em;
+}
+
+div.starYouEnded {
+  grid-column: 3;
+  grid-row: 5;
+  font-size: 0.70em;
+  padding-top: 0.50em;
+}
+/* Stars Row - End */
+
+
+/* Play Again button */
+button.btn.btn-info.btn-lg {
+  padding-top: 0.50em;
+  margin-top: 1.70em;
+  box-shadow: 1.15px 1.15px 1px #b4dadc, 2.5px 3.5px 6px 2px #004e52;
+  background-color: #c0f7f7;
+  color: #185a5f;
+}
+
+/* GAME WON OVERLAY - END */
+
+
+/* =================================================== */
+
+
+/* GAME OVER OVERLAY - START */
+
+#lossOverlay {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgb(211,222,255);
+  z-index: 90;
+  cursor: pointer;
+  text-align: center;
+}
+
+/* Source and Resource: https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Grids */
+/* Reading Reference: https://stackoverflow.com/questions/46184458/transform-translate-50-50 */
+#textLoss{
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  font-size: 3.85vw;
+  transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+}
+
+
+/* X at top right corner of Sorry You've Lost overlay */
+i.far.fa-times-circle.lossClose {
+  position: fixed;
+  top: 25px;
+  left: 90.5%;
+  color: rgb(59, 7, 134);
+}
+
+
+h2.lossUp {
+
+  text-shadow: -3px 3px 0px rgb(19, 0, 93), -3px 3px 2px rgb(19, 0, 93), 1px 5px 8px rgb(40, 41, 58), 1px 10px 30px rgb(199, 197, 224), -1px 10px 2px rgb(134, 145, 199);
+  color: rgb(185, 175, 255);
+  font-size: 220%;
+  font-family: 'Chicle', cursive;
+  font-weight: bold;
+  letter-spacing: 0.075em;
+}
+
+
+h3.lossDown {
+  font-weight: bold;
+  color: rgb(229, 245, 255);
+  font-family: 'Lato', sans-serif;
+  letter-spacing: 0.010em;
+  padding-top: 0.20em;
+  text-shadow: -1px 2px 2px rgb(0, 41, 40), -1px 1px 2px rgb(0, 41, 40), 0px 0px 5px rgb(41, 82, 93), 0px 0px 3px rgb(41, 82, 93);
+  font-size: 1.10em;
+}
+
+
+button.btn.btn-light.lossPlayAgain {
+  padding-top: 0.50em;
+  margin-top: 1em;
+  background-color: rgb(208, 201, 255);
+  border-color: rgb(103, 95, 117);
+  color: #53009a;
+  box-shadow: 1px 1px 10px 1px #b5b9d6, 1px 3px 4px 1px #000a63;
+}
+
+
+/* GAME OVER OVERLAY - END */
+
+
+/* =================================================== */
+
+
+/* SCOREBOARD - START */
+
+.scoreContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: minmax(3.125em, auto);
+  margin: auto;
+  margin-bottom: 2em;
+  width: 45vw;
+  color: rgb(25, 63, 70);
+  box-shadow: 3px 5px 10px #4d5050;
+  background-color: #d7fff2;
+}
+
+
+.scoreLevel {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+
+.scoreNavRestart {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.scoreNavInfo {
+  grid-column: 3;
+  grid-row: 1;
+}
+
+
+.scoreIconMatch {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.scoreIconMoves {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.scoreIconStars {
+  grid-column: 3;
+  grid-row: 2;
+}
+
+.scoreMatch {
+  grid-column: 1;
+  grid-row: 3;
+}
+
+.scoreMoves {
+  grid-column: 2;
+  grid-row: 3;
+}
+
+.scoreStars {
+  grid-column: 3;
+  grid-row: 3;
+}
+
+.scoreTimer {
+  grid-column: 1 / 4;
+  grid-row: 4;
+}
+
+.scoreBorder {
+  border-right: 1px solid rgb(7, 19, 85);
+}
+
+.scoreMoveMatchStar {
+  text-align: center;
+}
+
+.scoreIconRow {
+  font-size: 1.75em;
+  padding-top: 0.6em;
+}
+
+.scoreNumberRow {
+  font-size: 1.75em;
+  padding-top: 0.5em;
+  padding-bottom: 0.6em;
+}
+
+.scoreBorderLevel {
+  border-bottom: 1px solid rgb(7, 19, 85);
+  padding-top: 0.6em;
+  font-size: 1.30em;
+  color: rgb(87, 113, 107);
+}
+
+.scoreBorderTimer{
+  border-top: 1px solid rgb(7, 19, 85);
+  align-self: center;
+  text-align: center;
+  padding-top: 0.7em;
+  padding-bottom: 0.5em;
+  font-size: 1.85em;
+}
+
+.playStart {
+  padding-right: 0.50em;
+}
+
+/* SCOREBOARD - END */
+
+/* =================================================== */
+
+
+/* MEDIA SCREENS - START */
+
+@media screen and (max-width: 850px) {
+
+        /* "The-level-that-was-chosen" row on level chosen overlay grid */
+        .pickDescribe {
+          font-size: 7vw;
+        }
+}
+
+
+@media screen and (max-width: 770px) {
+
+        body {
+          width: 80%;
+        }
+
+        /* Cards */
+        div.card.open, div.card.match, div.card.noMatch {
+          font-size: 4.0rem;
+        }
+
+        /* DIV that creates the 4 x 4 grid for the card deck */
+        .deckContainer {
+          grid-auto-rows: minmax(9.5em, auto);
+        }
+
+}
+
+
+@media screen and (max-width: 700px) {
+
+
+        /* Cards */
+        div.card.open, div.card.match, div.card.noMatch {
+          font-size: 3.75rem;
+        }
+
+        /* DIV that creates the 4 x 4 grid for the card deck */
+        .deckContainer {
+          grid-auto-rows: minmax(9.0em, auto);
+        }
+}
+
+
+
+
+@media screen and (max-width: 625px) {
+
+        /* Cards */
+        div.card.open, div.card.match, div.card.noMatch {
+          font-size: 3.25rem;
+        }
+
+
+        /* DIV that creates the 4 x 4 grid for the card deck */
+        .deckContainer {
+          grid-auto-rows: minmax(8.75em, auto);
+        }
+
+
+        /* Welcome overlay */
+        #text{
+            font-size: 3.75vw;
+        }
+
+}
+
+
+
+
+@media screen and (max-width: 600px) {
+
+        /* Cards */
+        div.card.open, div.card.match, div.card.noMatch {
+          font-size: 3.0rem;
+        }
+
+        /* DIV that creates the 4 x 4 grid for the card deck */
+        .deckContainer {
+          grid-auto-rows: minmax(8.25em, auto);
+        }
+
+        /* DIV container that serves as the background for the deck of cards */
+        .primaryDeck {
+          padding-top: 3.0em;
+          padding-bottom: 3.0em;
+          padding-left: 1.7em;
+          padding-right: 1.7em;
+        }
+
+}
+
+
+
+@media screen and (max-width: 550px) {
+
+
+        /* Cards */
+        div.card.open, div.card.match, div.card.noMatch {
+          font-size: 2.85rem;
+        }
+
+        /* DIV that creates the 4 x 4 grid for the card deck */
+        .deckContainer {
+            grid-auto-rows: minmax(8.0em, auto);
+            grid-gap: 1.25em;
+            gap: 1.25em;
+        }
+
+        /* DIV container that serves as the background for the deck of cards */
+        .primaryDeck {
+          padding-top: 2.5em;
+          padding-bottom: 2.5em;
+          padding-left: 1.5em;
+          padding-right: 1.5em;
+        }
+
+}
+
+
+@media screen and (max-width: 530px) {
+
+        /* Container for "Your Pick: Skill Level You Chose" */
+        .pick-container {
+          min-width: 60vw;
+          min-height: 50vw;
+        }
+
+}
+
+
+
+@media screen and (max-width: 500px) {
+
+        /* Cards */
+        div.card.open, div.card.match, div.card.noMatch {
+          font-size: 2.75rem;
+        }
+
+        /* DIV that creates the 4 x 4 grid for the card deck */
+        .deckContainer {
+            grid-auto-rows: minmax(7.25em, auto);
+        }
+
+        /* DIV container that serves as the background for the deck of cards */
+        .primaryDeck {
+          padding-left: 1.25em;
+          padding-right: 1.25em;
+        }
+
+
+        .front {
+          font-size: 4.25vw;
+        }
+
+        /* Welcome overlay */
+        #text{
+            font-size: 5vw;
+        }
+
+}
+
+
+
+@media screen and (max-width: 450px) {
+
+        body {
+           width: 85%;
+           min-width: 320px;
+        }
+
+        /* Cards */
+        div.card.open, div.card.match, div.card.noMatch {
+          font-size: 2.50rem;
+        }
+
+        /* DIV that creates the 4 x 4 grid for the card deck */
+        .deckContainer {
+            grid-auto-rows: minmax(7.0em, auto);
+        }
+
+        /* DIV container that serves as the background for the deck of cards */
+        .primaryDeck {
+          padding-top: 2.25em;
+          padding-bottom: 2.25em;
+          padding-left: 1.25em;
+          padding-right: 1.25em;
+        }
+
+        /* Container for "Your Pick: Skill Level You Chose" */
+        .pick-container {
+          min-width: 70vw;
+          min-height: 55vw;
+        }
+
+}
+
+
+
+@media screen and (max-width: 400px) {
+
+
+        /* Cards */
+        div.card.open, div.card.match, div.card.noMatch {
+          font-size: 2.25rem;
+        }
+
+        /* DIV that creates the 4 x 4 grid for the card deck */
+        .deckContainer {
+            grid-auto-rows: minmax(5.5em, auto);
+            grid-gap: 1.0em;
+            gap: 1.0em;
+        }
+
+        /* DIV container that serves as the background for the deck of cards */
+        .primaryDeck {
+          padding-top: 2.0em;
+          padding-bottom: 2.0em;
+          padding-left: 1.0em;
+          padding-right: 1.0em;
+        }
+
+
+        /* Container for the header and four skill levels */
+        .card-container {
+          max-width: 80vw;
+          min-width: 70vw;
+          min-height: 70vw;
+        }
+
+
+        .front {
+          font-size: 4.75vw;
+        }
+
+
+        /* Container for "Your Pick: Skill Level You Chose" */
+        .pick-container {
+          min-width: 75vw;
+          min-height: 55vw;
+        }
+
+}
+
+
+
+@media screen and (max-width: 350px) {
+
+
+        /* Container for the header and four skill levels */
+        .card-container {
+          max-width: 90vw;
+          min-width: 80vw;
+          min-height: 80vw;
+
+        }
+
+        /* Container for "Your Pick: Skill Level You Chose" */
+        .pick-container {
+          min-width: 80vw;
+          min-height: 55vw;
+        }
+
+}
+
+
+@media screen and (max-width: 330px) {
+
+        body {
+           width: 70%;
+           min-width: 320px;
+        }
+
+
+        /* DIV that creates the 4 x 4 grid for the card deck */
+        .deckContainer {
+            grid-auto-rows: minmax(5.5em, auto);
+            grid-gap: 0.9em;
+            gap: 0.9em;
+        }
+
+        /* DIV container that serves as the background for the deck of cards */
+        .primaryDeck {
+          padding-top: 1.8em;
+          padding-bottom: 1.8em;
+          padding-left: 0.85em;
+          padding-right: 0.85em;
+        }
+
+}
+
+/* MEDIA SCREENS - END */
+
+
+/* =================================================== */

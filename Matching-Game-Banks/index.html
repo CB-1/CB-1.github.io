@@ -1,0 +1,612 @@
+<!--
+CHERYL BANKS
+MATCHING GAME PROJECT
+DEC 2018
+REVISED
+-->
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>The Matching Game</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
+    <link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    <link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Roboto+Condensed|Chicle|Roboto:900i|Oswald:500|Lato:700">
+    <link rel="stylesheet" href="css/app.css">
+
+
+</head>
+
+<body>
+
+  <div id="rulesOverlay">
+    <div id="rulesText">
+
+      <ul class="navRules">
+
+        <li><i class="navbar-brand far fa-times-circle fa-2x"></i></li>
+
+        <li><span id="itemBoard">Board</span></li>
+        <li><span id="itemSkill">Skill</span></li>
+        <li><span id="itemNav">Nav</span></li>
+        <li><span id="itemScore">Scoring</span></li>
+        <li><span id="itemHowToPlay">How To</span></li>
+
+      </ul>
+
+
+      <div class="rulesContainer">
+
+        <div class="rulesContent">
+
+          <div id="ruleIntro">
+            <p class="ruleTitles">Game Rules:</p>
+            <hr>
+
+            <p class="rulesParagraph">
+                This section is a full, detailed description of how to play the Matching Game.
+                It includes information regarding the game board, skill levels, score board
+                navigation, and scoring.
+            </p>
+
+          </div>
+
+
+          <div id="gameBoard" class="hidden">
+            <p class="ruleTitles">The Game Board:</p>
+            <hr>
+
+            <ul class="rulesParagraph">
+                <li>The board includes 16 cards shuffled at the start of each game.</li>
+
+                <li>Each card has a hidden symbol that appears when you click it.</li>
+
+                <li>There are 8 different symbols in all:
+                  <i class="fa fa-cube fa-lg"></i>,
+                  <i class="fa fa-paper-plane-o fa-lg"></i>,
+                  <i class="fa fa-bicycle fa-lg"></i>,
+                  <i class="fa fa-bolt fa-lg"></i>,
+                  <i class="fa fa-bomb fa-lg"></i>,
+                  <i class="fa fa-leaf fa-lg"></i>,
+                  <i class="fa fa-diamond fa-lg"></i>, and
+                  <i class="fa fa-anchor fa-lg"></i>.
+                </li>
+
+                <li>Each symbol appears on two separate cards, resulting in 8 pairs of matching cards.</li>
+            </ul>
+          </div>
+
+
+          <div id="gameSkill" class="hidden">
+              <p class="ruleTitles">Skill Levels:</p>
+              <hr>
+
+              <ul class="rulesParagraph">
+                  <li>There are 4 skill levels: easy, moderate, difficult, and impossible.</li>
+
+                  <li>Choose a skill level by clicking on the "Skill Level" drop down menu.</li>
+
+                  <li>The 'easy' level allows you 60 minutes and 100 moves.</li>
+
+                  <li>The 'moderate' level allows you 30 minutes and 50 moves.</li>
+
+                  <li>The 'difficult' level allows you 10 minutes and 25 moves.</li>
+
+                  <li>The 'impossible' level allows you 5 minutes and 10 moves.</li>
+              </ul>
+            </div>
+
+
+            <div id="gameNav" class="hidden">
+              <p class="ruleTitles">Navigation:</p>
+              <hr>
+
+              <ul class="rulesParagraph">
+                  <li>When you are ready to play, click the play icon <i class="fas fa-play" data-toggle="tooltip" title="Play"></i>.</li>
+
+                  <li>To pause the game, click the pause icon <i class="fas fa-pause" data-toggle="tooltip" title="Pause"></i>.</li>
+
+                  <li>To resume play, click the play icon again.</li>
+
+                  <li>To start a new game, click the replay icon <i class="fas fa-redo-alt" data-toggle="tooltip" title="Restart"></i>.</li>
+
+                  <li>To access the game rules, click the info icon <i class="fas fa-info" data-toggle="tooltip" title="Game Rules"></i>.</li>
+              </ul>
+            </div>
+
+
+            <div id="gameScore" class="hidden">
+                <p class="ruleTitles">Keeping Score:</p>
+                <hr>
+
+                <ul class="rulesParagraph score">
+                    <li>You have a number of moves, stars, and minutes to find all 8 card pairs.</li>
+
+                    <li>The number of moves and minutes will vary based on the skill level you choose.</li>
+
+                    <li>Regardless of skill level, you start the game with 5 stars.</li>
+
+                    <li>The number of stars declines as the number of moves remaining declines.</li>
+
+                    <li>Once you start the game, your progress is shown on the scoreboard.</li>
+
+                    <li>The first row includes the level you chose, the replay icon, and the info icon.</li>
+
+                    <li>The second row includes these stats: correct moves, moves remaining, and stars.</li>
+
+                    <li>This icon <i class="fas fa-clone"></i> represents the number of correct moves.</li>
+
+                    <li>The balloon icon <i class="fab fa-fly"></i> indicates the number of remaining moves.</li>
+
+                    <li>The star icon <i class="fa fa-star fa-lg"></i> indicates the number of remaining stars.</li>
+
+                    <li>The third row shows the time remaining.</li>
+                </ul>
+              </div>
+
+
+              <div id="gameHowToPlay" class="hidden">
+                  <p class="ruleTitles">How to Play:</p>
+                  <hr>
+
+                  <ul class="rulesParagraph">
+                      <li>The game board has 8 pairs of cards with matching symbols.</li>
+
+                      <li>Clicking on a card reveals its hidden symbol.</li>
+
+                      <li>Click on 2 cards at a time.</li>
+
+                      <li>If the card symbols don't match, then both cards are hidden again.</li>
+
+                      <li>If the card symbols do match, then both cards remain unhidden.</li>
+
+                      <li>Continue in this fashion until you find all 8 card pairs.</li>
+
+                      <li>Winning the game depends on how well you can remember each symbol on the board.</li>
+
+                </ul>
+              </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+
+  <div id="overlay">
+
+    <i class="fas fa-times fa-2x closer"></i>
+
+    <div id="text">
+
+        <div id="dialog-welcome">
+              <h2>Welcome</h2>
+              <h3>to the</h3>
+              <h2>Matching Game!</h2>
+              <hr>
+
+              <i class="fas fa-chevron-down showDown"></i>
+
+        </div>
+
+        <div id="dialog-about" class="hidden">
+
+                  <ul class="briefRules">
+
+                      <li>Objective: Find all 8 pairs of matching cards.</li>
+                      <li>Choose a skill level first.</li>
+                      <li>Click play <i class="fas fa-play" data-toggle="tooltip" title="Play"></i> to start the game.</li>
+                      <li>Search by clicking on 2 cards per move.</li>
+                      <li>Finish before you run out of time or moves.</li>
+
+                  </ul>
+
+                  <i class="fas fa-times fa-xs showDown"></i>
+
+        </div>
+
+    </div>
+  </div>
+
+
+
+  <div id="winOverlay">
+
+    <i class="far fa-times-circle fa-2x congratClose"></i>
+
+    <div id="textWin">
+
+        <div id="dialog-congrats">
+
+
+            <div class="">
+              <h2 class="fireUp">Congratulations!</h2>
+            </div>
+
+
+          <div class="containerForFinalStats">
+
+            <div class="statisticsBoardLogo">
+              <h3 class="fireDown">Game Stats</h3>
+            </div>
+
+            <div class="levelPlayedLogo">
+              <span id="playerLevel" class="startEndStatBoard"></span>
+            </div>
+
+            <!-- Timer Row -->
+            <div class="timeTimeLogo">
+              <i class="far fa-clock logoForStatBoard"></i>
+            </div>
+
+            <div class="beginTime">
+              <span id="commenceTime"><span id="minBegin"></span> min</span>
+            </div>
+
+            <div class="timeYouEnded">
+              <span id="overTime"></span>
+            </div>
+
+            <!-- Moves Row -->
+            <div class="moveMoveLogo">
+              <i class="fab fa-fly"></i>
+            </div>
+
+            <div class="moveBegin">
+              <span id="moveCommence"></span>
+            </div>
+
+            <div class="endYourMove">
+              <span id="moveOver"></span>
+            </div>
+
+
+            <!-- Stars Row -->
+            <div class="starStarLogo">
+              <i class="fa fa-star"></i>
+            </div>
+
+            <div class="starStarts">
+              <span id="beginningStars">5</span>
+            </div>
+
+            <div class="starYouEnded">
+              <span id="endingStars"></span>
+            </div>
+          </div>
+
+            <div class="playAgainWin">
+              <button type="button" class="btn btn-info btn-lg">Play Again</button>
+            </div>
+
+        </div>
+    </div>
+  </div>
+
+
+
+  <div id="lossOverlay">
+
+    <i class="far fa-times-circle fa-2x lossClose"></i>
+
+    <div id="textLoss">
+
+        <div id="dialog-loss">
+
+            <span>
+              <h2 class="lossUp">Game Over</h2>
+            </span>
+
+            <hr>
+
+            <span>
+              <h3 class="lossDown">There
+                <span id="wereTense">were </span>
+                <span id="pairsUnfound">8</span>
+                <span id="pairTense">pairs left</span>
+              </h3>
+            </span>
+
+            <div>
+              <button type="button" class="btn btn-light lossPlayAgain">Play Again</button>
+            </div>
+
+        </div>
+    </div>
+  </div>
+
+
+
+<div id="skillOverlay">
+  <div id="skillText">
+<!-- Source: https://nicolaskadis.info/projects/pure-css-flip-cards-using-bootstrap-4-and-css-grid-no-js -->
+    <div class="card-container">
+
+          <button type="button" class="btn btn-outline-dark headerLevel" disabled>
+              PICK A SKILL LEVEL
+          </button>
+
+        <div class="card-flip solid" id="flipEasy">
+
+            <div class="front easyFront">
+              Easy
+            </div>
+
+            <div class="back rearEasyFront">
+
+              <ul>
+                <li class="topperPickLight oneHour"><i class="far fa-clock"></i><span>1 </span><span>hour</span></li>
+
+                <li class="centerMinus centerMinusEasy">
+                  <!-- This eliminates spacing between the font awesome icons.
+                  Source: https://css-tricks.com/fighting-the-space-between-inline-block-elements/ -->
+                  <i class="fas fa-minus fa-xs"></i><!--
+                  --><i class="fas fa-minus fa-xs"></i><!--
+                  --><i class="fas fa-minus fa-xs"></i><!--
+                    --><i class="fas fa-minus fa-xs"></i><!--
+                    --><i class="fas fa-minus fa-xs"></i><!--
+                    --><i class="fas fa-minus fa-xs"></i><!--
+                    --><i class="fas fa-minus fa-xs"></i>
+                    <i class="fas fa-infinity fa-xs"></i><i class="fas fa-infinity fa-xs"></i>
+                    <i class="fas fa-minus fa-xs"></i><!--
+                    --><i class="fas fa-minus fa-xs"></i><!--
+                    --><i class="fas fa-minus fa-xs"></i><!--
+                    --><i class="fas fa-minus fa-xs"></i><!--
+                    --><i class="fas fa-minus fa-xs"></i><!--
+                    --><i class="fas fa-minus fa-xs"></i><!--
+                    --><i class="fas fa-minus fa-xs"></i>
+                </li>
+
+                <li class="rearPick"><i class="fab fa-fly"></i><span>100 </span><span>moves</span></li>
+              </ul>
+
+            </div>
+
+        </div>
+
+        <div class="card-flip solidMod" id="flipMod">
+
+            <div class="front modFront">
+              Moderate
+            </div>
+
+            <div class="back rearModFront">
+              <ul>
+                <li class="topperPickLight"><i class="far fa-clock"></i><span>30 </span><span>minutes</span></li>
+
+                <li class="centerMinus centerMinusMod">
+                  <i class="fas fa-minus fa-xs"></i><!--
+                  --><i class="fas fa-minus fa-xs"></i><!--
+                  --><i class="fas fa-minus fa-xs"></i><!--
+                    --><i class="fas fa-minus fa-xs"></i><!--
+                    --><i class="fas fa-minus fa-xs"></i><!--
+                    --><i class="fas fa-minus fa-xs"></i><!--
+                    --><i class="fas fa-minus fa-xs"></i>
+                    <i class="fas fa-infinity fa-xs"></i><i class="fas fa-infinity fa-xs"></i>
+                    <i class="fas fa-minus fa-xs"></i><!--
+                    --><i class="fas fa-minus fa-xs"></i><!--
+                    --><i class="fas fa-minus fa-xs"></i><!--
+                    --><i class="fas fa-minus fa-xs"></i><!--
+                    --><i class="fas fa-minus fa-xs"></i><!--
+                    --><i class="fas fa-minus fa-xs"></i><!--
+                    --><i class="fas fa-minus fa-xs"></i>
+                </li>
+
+                <li class="rearPick"><i class="fab fa-fly"></i><span>50 </span><span>moves</span></li>
+              </ul>
+            </div>
+
+        </div>
+
+        <div class="card-flip solidDiff" id="flipDiff">
+
+            <div class="front diffFront">
+              Difficult
+            </div>
+
+            <div class="back rearDiffFront">
+              <ul>
+                <li class="topperPick"><i class="far fa-clock"></i><span>10 </span><span>minutes</span></li>
+
+                <li class="centerMinus centerMinusDiff">
+                  <i class="fas fa-minus fa-xs"></i><!--
+                  --><i class="fas fa-minus fa-xs"></i><!--
+                  --><i class="fas fa-minus fa-xs"></i><!--
+                    --><i class="fas fa-minus fa-xs"></i><!--
+                    --><i class="fas fa-minus fa-xs"></i><!--
+                    --><i class="fas fa-minus fa-xs"></i><!--
+                    --><i class="fas fa-minus fa-xs"></i>
+                    <i class="fas fa-infinity fa-xs"></i><i class="fas fa-infinity fa-xs"></i>
+                    <i class="fas fa-minus fa-xs"></i><!--
+                    --><i class="fas fa-minus fa-xs"></i><!--
+                    --><i class="fas fa-minus fa-xs"></i><!--
+                    --><i class="fas fa-minus fa-xs"></i><!--
+                    --><i class="fas fa-minus fa-xs"></i><!--
+                    --><i class="fas fa-minus fa-xs"></i><!--
+                    --><i class="fas fa-minus fa-xs"></i>
+                </li>
+
+                <li class="rearPick"><i class="fab fa-fly"></i><span>25 </span><span>moves</span></li>
+              </ul>
+            </div>
+
+        </div>
+
+
+        <div class="card-flip solidImp" id="flipImp">
+
+            <div class="front impFront">
+              Impossible
+            </div>
+
+            <div class="back rearImpFront">
+              <ul>
+                <li class="topperPick"><i class="far fa-clock"></i><span>5 </span><span>minutes</span></li>
+
+                <li class="centerMinus centerMinusImp">
+                  <i class="fas fa-minus fa-xs"></i><!--
+                  --><i class="fas fa-minus fa-xs"></i><!--
+                  --><i class="fas fa-minus fa-xs"></i><!--
+                    --><i class="fas fa-minus fa-xs"></i><!--
+                    --><i class="fas fa-minus fa-xs"></i><!--
+                    --><i class="fas fa-minus fa-xs"></i><!--
+                    --><i class="fas fa-minus fa-xs"></i>
+                    <i class="fas fa-infinity fa-xs"></i><i class="fas fa-infinity fa-xs"></i>
+                    <i class="fas fa-minus fa-xs"></i><!--
+                    --><i class="fas fa-minus fa-xs"></i><!--
+                    --><i class="fas fa-minus fa-xs"></i><!--
+                    --><i class="fas fa-minus fa-xs"></i><!--
+                    --><i class="fas fa-minus fa-xs"></i><!--
+                    --><i class="fas fa-minus fa-xs"></i><!--
+                    --><i class="fas fa-minus fa-xs"></i>
+                </li>
+
+                <li class="rearPick"><i class="fab fa-fly"></i><span>10 </span><span>moves</span></li>
+
+              </ul>
+            </div>
+
+        </div>
+
+    </div>
+
+  </div>
+</div>
+
+
+
+<div id="pickOverlay">
+  <div id="pickText">
+
+    <div class="pick-container">
+
+      <div class="pickLevel">
+
+          <div class="textPick">
+            Your Pick:
+          </div>
+
+          <div class="pickDescribe">
+
+          </div>
+
+          <div class="buttonPick">
+            <span class="leftButton">
+              <button type="button" class="btn btn-lg back">
+                <i class="fas fa-arrow-left"></i>
+                  Back
+              </button>
+            </span>
+
+            <span class="rightButton">
+              <button type="button" class="btn btn-lg next">
+                <i class="fas fa-arrow-right"></i>
+                  Next
+              </button>
+            </span>
+          </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+
+
+<div id="gameContent" class="containerMain">
+
+    <header>
+        <h1>The Matching Game</h1>
+    </header>
+
+    <div class="scoreContainer">
+
+          <div class="scoreLevel scoreBorderLevel scoreMoveMatchStar">
+            <span id="scoreBoardLevel"></span>
+          </div>
+
+          <div class="scoreNavRestart scoreBorderLevel scoreMoveMatchStar">
+            <i class="fas fa-redo-alt" data-toggle="tooltip" title="Restart"></i>
+          </div>
+
+          <div class="scoreNavInfo scoreBorderLevel scoreMoveMatchStar">
+            <i class="fas fa-info" data-toggle="tooltip" title="Game Rules"></i>
+          </div>
+
+          <div class="scoreIconMatch scoreBorder scoreMoveMatchStar scoreIconRow">
+            <i class="fas fa-clone"></i>
+          </div>
+
+          <div class="scoreMatch scoreBorder scoreMoveMatchStar scoreNumberRow">
+            <span id="scoreBoardMatch">0</span>
+          </div>
+
+          <div class="scoreIconMoves scoreBorder scoreMoveMatchStar scoreIconRow">
+            <i class="fab fa-fly"></i>
+          </div>
+
+          <div class="scoreMoves scoreBorder scoreMoveMatchStar scoreNumberRow">
+            <span id="scoreBoardMoves"></span>
+          </div>
+
+          <div class="scoreIconStars scoreMoveMatchStar scoreIconRow">
+            <i class="fa fa-star"></i>
+          </div>
+
+          <div class="scoreStars scoreMoveMatchStar scoreNumberRow">
+            <span id="scoreBoardStars"></span>
+          </div>
+
+          <div class="scoreTimer scoreBorderTimer">
+            <i id="play-pause-tab" class="fas fa-play playStart" data-toggle="tooltip" title="Play"></i>
+            <span id="scoreBoardTime"></span>
+          </div>
+
+
+    </div>
+
+
+    <div class="primaryDeck">
+      <div class="deckContainer">
+          <div class="card"><i class="fa fa-diamond"></i></div>
+          <div class="card"><i class="fa fa-paper-plane-o"></i></div>
+          <div class="card"><i class="fa fa-anchor"></i></div>
+          <div class="card"><i class="fa fa-bolt"></i></div>
+          <div class="card"><i class="fa fa-cube"></i></div>
+          <div class="card"><i class="fa fa-anchor"></i></div>
+          <div class="card"><i class="fa fa-leaf"></i></div>
+          <div class="card"><i class="fa fa-bicycle"></i></div>
+          <div class="card"><i class="fa fa-diamond"></i></div>
+          <div class="card"><i class="fa fa-bomb"></i></div>
+          <div class="card"><i class="fa fa-leaf"></i></div>
+          <div class="card"><i class="fa fa-bomb"></i></div>
+          <div class="card"><i class="fa fa-bolt"></i></div>
+          <div class="card"><i class="fa fa-bicycle"></i></div>
+          <div class="card"><i class="fa fa-paper-plane-o"></i></div>
+          <div class="card"><i class="fa fa-cube"></i></div>
+      </div>
+    </div>
+
+</div>
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+    <script src="js/app.js"></script>
+
+</body>
+
+</html>
