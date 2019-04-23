@@ -171,6 +171,11 @@ header {
       color: #003235;
     }
 
+    .cherylGitHub {
+      color: #078898;
+      text-decoration: underline;
+    }
+
     .craigslistSkills {
       grid-column: 1 / 2;
       grid-row: 2;
@@ -202,7 +207,7 @@ header {
 
     .craigslistGitHub {
       color: #005152;
-      font-size: 0.8rem;
+      font-size: 3rem;
     }
 
     .craigslistIntro {
@@ -250,7 +255,7 @@ header {
 
     .matchingGameGitHub {
       color: #014634;
-      font-size: 0.8rem;
+      font-size: 3rem;
     }
 
     .matchingGameIntro {
@@ -300,7 +305,7 @@ header {
 
     .berkshireHathawayGitHub {
       color: #634a4a;
-      font-size: 0.8rem;
+      font-size: 3rem;
     }
 
     .berkshireHathawayIntro {
