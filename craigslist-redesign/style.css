@@ -288,3 +288,9 @@ i.fas.fa-sign-in-alt.fa-lg {
 h2.topper {
   color: rgb(0, 79, 111);
 }
+
+@media only screen and (min-width: 990px){
+
+  i.fas.fa-sign-in-alt.fa-lg {
+    padding-left: 14rem;
+}
