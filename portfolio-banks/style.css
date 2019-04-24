@@ -397,7 +397,7 @@ header {
         .instaStopTilt {
           grid-column: 2;
           grid-row: 3;
-          width: 17em;
+          width: 18.5em;
           margin: auto;
           box-shadow: 3px 3px 6px #4e4e4e;
         }
