@@ -14,7 +14,7 @@ body {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-auto-rows: minmax(10px, auto);
-    grid-gap: 1px;
+    grid-gap: 0.70px;
     max-width: 990px;
     min-width: 640px;
 }
@@ -91,14 +91,14 @@ header {
       padding-top: 2rem;
     }
 
-.mySkills {
+.myWebSkills {
   grid-column: 1 / 3;
   grid-row: 3;
   background-color: #C7FFF0;
 
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, 1fr);
+  grid-template-rows: 1fr;
   grid-gap: 0px;
 
   padding-bottom: 1.5em;
@@ -118,17 +118,33 @@ header {
     .webDevPicture {
       grid-column: 2 / 3;
       grid-row: 1;
-      width: 19em;
-      padding-top: 2.2em;
-      padding-left: 2em;
+      width: 20em;
+      padding-top: 1.5em;
+      padding-left: 0.5em;
     }
+
+.myGraphicSkills {
+  grid-column: 1 / 3;
+  grid-row: 4;
+  /**grid-row: 5;**/
+  background-color: #FDDBB8;
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr;
+  grid-gap: 0px;
+
+  padding-bottom: 1.5em;
+  padding-top: 1.5em;
+}
 
     .graphDesignPicture {
       grid-column: 1 / 2;
       grid-row: 2;
       width: 19em;
-      padding-top: 3.4em;
-      padding-left: 2em;
+      height: 16em;
+      padding-left: 1.5em;
+      width: 23em;
     }
 
     .graphDesignSkills {
@@ -137,14 +153,14 @@ header {
       font-family: 'Fjalla One', sans-serif;
       width: 19em;
       padding-left: 2em;
-      padding-top: 3.5em;
+      padding-top: 2em;
       color: #d42a02;
     }
 
 .webGallery {
   grid-column: 1 / 3;
   grid-row: 5;
-  background-color: #fcfac0;
+  background: linear-gradient(160deg, #dffff7, #94efd6, #fcfac0, #ff9555);
 
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -157,19 +173,24 @@ header {
     .galleryTop {
       grid-column: 1 / 3;
       grid-row: 1;
-      padding-left: 3rem;
-      padding-bottom: 1.6rem;
+      padding-left: 2rem;
+      padding-right: 2rem;
+      padding-bottom: 1rem;
     }
 
     .galleryTitle {
       font-family: 'Lato', sans-serif;
       color: #00716e;
+      font-size: 2.5rem;
+      text-align: center;
+      border-bottom: 0.05rem solid white;
     }
 
     .galleryDescription {
       width: 35em;
       font-family: 'Roboto', sans-serif;
       color: #003235;
+      padding-left: 1rem;
     }
 
     .cherylGitHub {
@@ -208,7 +229,7 @@ header {
 
     .craigslistGitHub {
       color: #005152;
-      font-size: 3rem;
+      font-size: 2rem;
     }
 
     .craigslistIntro {
@@ -216,24 +237,23 @@ header {
       grid-row: 2;
       width: 18em;
       padding-left: 1em;
-      padding-top: 0.5em;
+      padding-top: 1em;
     }
-
 
     .yellowLineIntro {
       grid-column: 1 / 3;
       grid-row: 3;
       width: 40em;
       padding-left: 3.25em;
-      padding-top: 4em;
+      padding-top: 2em;
+      border-bottom: 0.1rem solid white;
     }
-
 
     .matchingGameSkills {
       grid-column: 2 / 3;
       grid-row: 4;
       padding-left: 0.75em;
-      padding-top: 5.5em;
+      padding-top: 3em;
     }
 
     .matchingGameMini {
@@ -256,7 +276,7 @@ header {
 
     .matchingGameGitHub {
       color: #014634;
-      font-size: 3rem;
+      font-size: 2rem;
     }
 
     .matchingGameIntro {
@@ -264,7 +284,7 @@ header {
       grid-row: 4;
       width: 20em;
       padding-left: 2.5em;
-      padding-top: 3.5em;
+      padding-top: 2em;
     }
 
 
@@ -273,7 +293,8 @@ header {
       grid-row: 5;
       width: 40em;
       padding-left: 3.25em;
-      padding-top: 4em;
+      padding-top: 3.2em;
+      border-bottom: 0.1rem solid white;
     }
 
 
@@ -281,7 +302,7 @@ header {
       grid-column: 1 / 2;
       grid-row: 6;
       padding-left: 3em;
-      padding-top: 7em;
+      padding-top: 3em;
     }
 
     .berkshireHathawayMini {
@@ -296,7 +317,7 @@ header {
     }
 
     .twoBerkshireHathawayDescribe {
-      padding-top: 1.5em;
+      padding-top: 1em;
     }
 
     .linkBerkshireHathaway {
@@ -306,7 +327,7 @@ header {
 
     .berkshireHathawayGitHub {
       color: #634a4a;
-      font-size: 3rem;
+      font-size: 2rem;
     }
 
     .berkshireHathawayIntro {
@@ -314,7 +335,7 @@ header {
       grid-row: 6;
       width: 18em;
       padding-left: 1em;
-      padding-top: 3.9em;
+      padding-top: 3em;
     }
 
 
@@ -336,17 +357,21 @@ header {
       grid-row: 1;
       padding-left: 1.75rem;
       padding-bottom: 1.6rem;
+      padding-right: 1.75rem;
     }
 
     .graphicGalleryTitle {
       font-family: 'Lato', sans-serif;
-      color: #634a4a;
+      color: #e84a08;
+      font-size: 2.5rem;
+      text-align: center;
+      border-bottom: 0.05rem solid #e84a08;
     }
 
     .graphicGalleryDescription {
       width: 39em;
       font-family: 'Roboto', sans-serif;
-      color: #634a4a;
+      color: #0f8688;
     }
 
     .myDesignsGrid {
@@ -468,13 +493,24 @@ header {
     margin-left: auto;
   }
 
+  .graphDesignPicture {
+    width: 22em;
+    height: 17em;
+    padding-top: 0.5em;
+    padding-left: 1.5em;
+  }
+
+  .graphDesignSkills {
+    padding-top: 3em;
+  }
+
 }
 
 
 @media only screen and (max-width: 675px){
 
   .webDevPicture {
-    width: 17em;
+    width: 18em;
     padding-left: 1em;
   }
 
@@ -483,12 +519,14 @@ header {
   }
 
   .graphDesignPicture {
-    width: 18em;
+    width: 19em;
+    height: 15em;
+    padding-left: 0.5em;
   }
 
   .graphDesignSkills {
     font-size: 0.95rem;
-    padding-left: 1em;
+    padding-left: 1.5em;
   }
 
   .galleryTop {
@@ -500,7 +538,7 @@ header {
   }
 
   .craigslistIntro {
-    width: 14.5em;
+    width: 15.75em;
   }
 
   .craigslistDescribe {
@@ -510,10 +548,6 @@ header {
 
   .craigslistMini {
     width: 10em;
-  }
-
-  .yellowLineIntro {
-    width: 37em;
   }
 
   .matchingGameIntro {
@@ -531,14 +565,6 @@ header {
   .matchingGameDescribe {
     width: 16em;
     font-size: 0.9rem;
-  }
-
-  .yellowLineIntro2 {
-    width: 37em;
-  }
-
-  .berkshireHathawayMini {
-    width: 14em;
   }
 
   .berkshireHathawayIntro {
