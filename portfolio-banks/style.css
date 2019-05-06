@@ -30,13 +30,17 @@ header {
         font-size: 1rem;
       }
 
-      .designGallery {
-        font-size: 0.9rem;
-      }
-
-      .topper, .designGallery {
+      .topper, .mailMe, .gitHubLeader {
         margin-bottom: 0;
         color: #ffffff;
+      }
+
+      .gitHubLeader, .mailMe {
+        font-size: 1.25rem;
+      }
+
+      .mailMe {
+        padding-left: 0.3em;
       }
 
 
@@ -472,8 +476,8 @@ header {
 
 @media only screen and (min-width: 992px) {
 
-  .designGallery {
-    padding-left: 30em;
+  .contactContain {
+    padding-left: 33em;
   }
 
 }
